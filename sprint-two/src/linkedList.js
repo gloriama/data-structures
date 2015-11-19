@@ -18,12 +18,15 @@ var LinkedList = function() {
   };
 
   list.removeHead = function() {
+    var returnVal = undefined;
     if (list.head) {
+      returnVal = list.head.value;
       list.head = list.head.next;
       if (!list.head) {
         list.tail = null;
       }
     }
+    return returnVal;
   };
 
   list.contains = function(target) {
