@@ -46,6 +46,8 @@ Graph.prototype.addEdge = function(fromNode, toNode) {
 // ------------------------
 // Remove an edge between any two specified (by value) nodes.
 Graph.prototype.removeEdge = function(fromNode, toNode) {
+  delete this.storage[fromNode][toNode];
+  delete this.storage[toNode][fromNode];
 };
 
 // ------------------------
