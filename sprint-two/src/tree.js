@@ -18,6 +18,27 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target) {
+  //(a longer version, saved for fun)
+
+  // var found = false;
+
+  // var search = function(root){
+  //   if (root.value === target){
+  //     found = true;
+  //   } else {
+  //     _.each(root.children, function(child){
+  //       search(child);
+  //     });
+  //   }
+  // }
+  // search(this);
+  // return found;
+
+  //==============
+
+  return (this.value === target) ||
+         _.some(this.children, function(child) { return child.contains(target); });
+
 };
 
 
