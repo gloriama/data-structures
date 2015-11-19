@@ -22,7 +22,7 @@ var LinkedList = function() {
     if (list.head) {
       returnVal = list.head.value;
       list.head = list.head.next;
-      if (!list.head) {
+      if (list.head === null) {
         list.tail = null;
       }
     }
@@ -30,6 +30,15 @@ var LinkedList = function() {
   };
 
   list.contains = function(target) {
+    var currNode = list.head;
+
+    while(currNode){
+      if (currNode.value === target){
+        return true;
+      }
+      currNode = currNode.next;
+    }
+    return false;
   };
 
   return list;
