@@ -6,11 +6,24 @@ var LinkedList = function() {
   list.addToTail = function(value) {
     //create node with value
     var node = Node(value);
+    //if we are adding the first node to this list, point list.head to it
+    //else, if we already have a list.tail, make its next property point to node
+    if (list.tail === null) {
+      list.head = node;
+    } else {
+      list.tail.next = node;
+    }
     //list.tail = node;
     list.tail = node;
   };
 
   list.removeHead = function() {
+    if (list.head) {
+      list.head = list.head.next;
+      if (!list.head) {
+        list.tail = null;
+      }
+    }
   };
 
   list.contains = function(target) {
