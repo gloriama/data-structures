@@ -13,12 +13,12 @@ var Stack = function() {
 
 var stackMethods = {};
 
-//stackMethods.push = a function that adds a value to the stack (which will be accessed by this)
+//stackMethods.push = a function that adds a value to the stack bound to 'this'
 //stackMethods.pop = a function that removes a value from the stack (same as above)
 //stackMethods.size = a function that returns the size of the stack (same as above)
 
 stackMethods.push = function(value) {
-
+  this.stackSize++;
 };
 
 stackMethods.pop = function() {
@@ -26,5 +26,5 @@ stackMethods.pop = function() {
 };
 
 stackMethods.size = function() {
-  return 0;
+  return this.stackSize;
 };
