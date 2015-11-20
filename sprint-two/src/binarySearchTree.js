@@ -10,7 +10,19 @@ var BinarySearchTree = function(value) { //written using prototypal class style
 
 //create methods on BinarySearchTree.prototype
 BinarySearchTree.prototype.insert = function(value) {
-
+  if (value < this.value){
+    if (this.left){
+      this.left.insert(value);
+    } else {
+      this.left = BinarySearchTree(value);
+    }
+  } else if (value > this.value){
+    if (this.right){
+      this.right.insert(value);
+    } else {
+      this.right = BinarySearchTree(value);
+    }
+  }
 };
 
 BinarySearchTree.prototype.contains = function(value) {
