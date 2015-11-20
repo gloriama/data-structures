@@ -16,10 +16,22 @@ HashTable.prototype.insert = function(k, v) {
   if (this._storage.get(index) === undefined) {
     this._storage.set(index, []); 
   }
-  
-  var item = {};
-  item[k] = v;
-  this._storage.get(index).push(item);
+
+  var bucket = this._storage.get(index);
+
+  var found = false;
+  _.each(bucket, function(item) {
+    if (k in item){
+      item[k] = v;
+      found = true;
+    }
+  });
+
+  if (!found){
+    var newItem = {};
+    newItem[k] = v;
+    bucket.push(newItem);
+  }
 };
 
 HashTable.prototype.retrieve = function(k) {
@@ -46,11 +58,15 @@ HashTable.prototype.remove = function(k) {
     //if k in item
       //bucket.splice with index,1
   var bucket = this._storage.get(index);
+  var kIndex = -1;
   _.each(bucket, function(item, index) {
     if (k in item) {
-      bucket.splice(index, 1);
+      kIndex = index;
     }
   });
+  if (kIndex >= 0) {
+    bucket.splice(kIndex, 1);
+  }
 };
 
 
@@ -59,4 +75,7 @@ HashTable.prototype.remove = function(k) {
  * Complexity: What is the time complexity of the above functions?
  */
 
-
+//insert: O(n) if hash degenerated into an array
+//retrieve: O(n) if hash degenerated into an array
+//remove: O(n) if hash degenerated into array
+//(all would be O(1) if the hash function is perfect)
