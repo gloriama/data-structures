@@ -26,8 +26,17 @@ doublyLinkedListMethods.addToHead = function(value) {
   this.head = node;
 };
 
-doublyLinkedListMethods.addToTail = function() {
+doublyLinkedListMethods.addToTail = function(value) {
+  var node = Node(value);
 
+  if (this.tail) {
+    node.previous = this.tail;
+    this.tail.next = node;
+  } else {
+    this.head = node;
+  }
+  
+  this.tail = node;
 };
 
 doublyLinkedListMethods.removeHead = function() {
