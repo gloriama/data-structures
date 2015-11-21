@@ -51,7 +51,14 @@ doublyLinkedListMethods.removeHead = function() {
 };
 
 doublyLinkedListMethods.removeTail = function() {
-
+  if (this.tail) {
+    this.tail = this.tail.previous;
+    if (this.tail) {
+      this.tail.next = null;
+    } else {
+      this.head = null;
+    }
+  }
 };
 
 doublyLinkedListMethods.contains = function() {
