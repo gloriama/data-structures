@@ -19,8 +19,9 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.removeFromParent = function() {
+  var thisTree = this;
   this.parent.children = _.reject(this.parent.children, function(child) {
-    return child === this;
+    return child === thisTree;
   });
   this.parent = null;
 };
