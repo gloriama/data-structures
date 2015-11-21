@@ -23,3 +23,22 @@ var DoublyLinkedList = function() {
 var doublyLinkedListMethods = {};
 
 //add methods for doublyLinkedList
+doublyLinkedListMethods.addToHead = function() {
+  
+};
+
+doublyLinkedListMethods.addToTail = function() {
+  
+};
+
+doublyLinkedListMethods.removeHead = function() {
+  
+};
+
+doublyLinkedListMethods.removeTail = function() {
+  
+};
+
+doublyLinkedListMethods.contains = function() {
+  
+};
