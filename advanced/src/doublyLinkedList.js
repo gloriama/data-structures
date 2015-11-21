@@ -1,13 +1,5 @@
-//declare DoublyLinkedList constructor function in functional-shared style
+//classes use functional-shared style
 
-//DoublyLinkedList is a function that takes no args
-  //create an empty object called doublyLinkedList
-  //add property to doublyLinkedList called head, initialized to null
-  //add property to doublyLinkedList called tail, initialized to null
-
-  //via extend, add methods to doublyLinkedList
-
-  //return doublyLinkedList
 var DoublyLinkedList = function() {
   var doublyLinkedList = {};
 
@@ -19,26 +11,42 @@ var DoublyLinkedList = function() {
   return doublyLinkedList;
 };
 
-//declare doublyLinkedListMethods, initialized to empty object
 var doublyLinkedListMethods = {};
 
-//add methods for doublyLinkedList
-doublyLinkedListMethods.addToHead = function() {
+doublyLinkedListMethods.addToHead = function(value) {
+  var node = Node(value);
+
+  if (this.tail) {
+    this.head.previous = node;
+    node.next = this.head;
+  } else {
+    this.tail = node;
+  }
   
+  this.head = node;
 };
 
 doublyLinkedListMethods.addToTail = function() {
-  
+
 };
 
 doublyLinkedListMethods.removeHead = function() {
-  
+
 };
 
 doublyLinkedListMethods.removeTail = function() {
-  
+
 };
 
 doublyLinkedListMethods.contains = function() {
-  
+
+};
+
+//create node class
+var Node = function(value) {
+  var node = {};
+  node.value = value;
+  node.next = null;
+  node.previous = null;
+  return node;
 };
