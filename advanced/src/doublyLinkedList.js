@@ -40,7 +40,14 @@ doublyLinkedListMethods.addToTail = function(value) {
 };
 
 doublyLinkedListMethods.removeHead = function() {
-
+  if (this.head) {
+    this.head = this.head.next;
+    if (this.head) {
+      this.head.previous = null;
+    } else {
+      this.tail = null;
+    }
+  }
 };
 
 doublyLinkedListMethods.removeTail = function() {
