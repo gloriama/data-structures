@@ -71,8 +71,16 @@ doublyLinkedListMethods.removeTail = function() {
   return returnVal;
 };
 
-doublyLinkedListMethods.contains = function() {
-
+doublyLinkedListMethods.contains = function(target) {
+  var currNode = this.head;
+  while (currNode){
+    if (currNode.value === target){
+      return true;
+    } else {
+      currNode = currNode.next;
+    }
+  }
+  return false;
 };
 
 //create node class
