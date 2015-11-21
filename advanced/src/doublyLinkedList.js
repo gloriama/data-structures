@@ -56,7 +56,10 @@ doublyLinkedListMethods.removeHead = function() {
 };
 
 doublyLinkedListMethods.removeTail = function() {
+  var returnVal = undefined;
+
   if (this.tail) {
+    returnVal = this.tail.value;
     this.tail = this.tail.previous;
     if (this.tail) {
       this.tail.next = null;
@@ -64,6 +67,8 @@ doublyLinkedListMethods.removeTail = function() {
       this.head = null;
     }
   }
+
+  return returnVal;
 };
 
 doublyLinkedListMethods.contains = function() {
