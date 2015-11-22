@@ -25,6 +25,12 @@ Graph.prototype.contains = function(node) {
 // ------------------------
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
+  //update every node in the graph to remove property with key node
+  var graphStorage = this.storage;
+  this.forEachNode(function(nodeVal) {
+    var currNode = graphStorage[nodeVal];
+    delete currNode[node];
+  });
   delete this.storage[node];
 };
 
@@ -64,7 +70,7 @@ Graph.prototype.forEachNode = function(cb) {
 
 //addNode: O(1)
 //contains: O(1)
-//removeNode: O(1)
+//removeNode: O(n)
 //hasEdge: O(1)
 //addEdge: O(1)
 //removeEdge: O(1)
