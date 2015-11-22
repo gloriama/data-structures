@@ -5,7 +5,7 @@ describe('tree', function() {
     tree = Tree();
   });
 
-  it('should have methods named "addChild", "removeFromParent", and "contains", and properties named "value" and "parent"', function() {
+  it('should have methods named "addChild", "removeFromParent", "contains", and "traverse", and properties named "value" and "parent"', function() {
     expect(tree.addChild).to.be.a("function");
     expect(tree.removeFromParent).to.be.a("function"); //new test for advanced tree
     expect(tree.contains).to.be.a("function");
@@ -51,6 +51,20 @@ describe('tree', function() {
     tree.children[1].addChild(8);
     expect(tree.contains(7)).to.equal(true);
     expect(tree.contains(8)).to.equal(true);
+  });
+
+  it('should apply a callback for each value in the tree', function() {
+    tree.addChild(1);
+    tree.addChild(2);
+    tree.addChild(3);
+    tree.addChild(4);
+    var product = 1;
+    tree.traverse(function(value) {
+      if (value) {
+        product *= value;
+      }
+    });
+    expect(product).to.equal(24);
   });
 
 });

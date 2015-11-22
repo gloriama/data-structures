@@ -50,7 +50,13 @@ treeMethods.contains = function(target) {
 
 };
 
-
+treeMethods.traverse = function(cb) {
+  var thisTree = this;
+  cb.call(this, this.value);
+  _.each(this.children, function(child) {
+    child.traverse(cb);
+  });
+};
 
 /*
  * Complexity: What is the time complexity of the above functions?
