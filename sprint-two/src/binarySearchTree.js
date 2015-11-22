@@ -38,7 +38,7 @@ BinarySearchTree.prototype.contains = function(value) {
 };
 
 BinarySearchTree.prototype.depthFirstLog = function(cb) {
-  cb(this.value);
+  cb.call(this, this.value);
   if (this.left) {
     this.left.depthFirstLog(cb);
   }
